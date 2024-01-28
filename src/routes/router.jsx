@@ -2,6 +2,9 @@ import { createBrowserRouter } from "react-router-dom";
 
 import App from "../App.jsx";
 import Home from "../pages/Home.jsx";
+import Contact from "../pages/Contact.jsx";
+import About from "../pages/About.jsx";
+import Products from "../pages/Products.jsx";
 
 export const router = createBrowserRouter([
   {
@@ -32,35 +35,23 @@ export const router = createBrowserRouter([
       //     </Protected>
       //   ),
       // },
-      // {
-      //   path: "/doctors",
-      //   element: (
-      //     <Protected authentication>
-      //       <DoctorsDetails />
-      //     </Protected>
-      //   ),
-      // },
-      // {
-      //   path: "/services",
-      //   element: <Services />,
-      // },
-      // {
-      //   path: "/contact",
-      //   element: <Contact />,
-      // },
+      {
+        path: "/products",
+        element: <Products />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
       // {
       //   path: "/users/profile/me",
       //   element: (
       //     <Protected authentication>
       //       <MyAccount />
-      //     </Protected>
-      //   ),
-      // },
-      // {
-      //   path: "doctors/profile/me",
-      //   element: (
-      //     <Protected authentication>
-      //       <Dashboard />
       //     </Protected>
       //   ),
       // },
