@@ -8,9 +8,25 @@ const initialState = {
 const productListSlice = createSlice({
     name: 'cart',
     initialState,
-    reducers: {}
+    reducers: {
+        addToCart: (state, action) => {
+            const item = action.payload;
+            const existingIndex = state.cart.findIndex((prod) => prod.id === item.id);
+            if (existingIndex) {
+                state.cart[existingIndex] = {
+                    ...state.cart[existingIndex],
+                    cartQuantity: state.cartItems[existingIndex].cartQuantity + 1,
+                }
+            } else {
+                let tempProductItem = { ...item, cartQuantity: 1 };
+                state.cart.push(tempProductItem);
+            }
+
+            localStorage.setItem("cartItems", JSON.stringify(state.cart));
+        }
+    }
 });
 
-export const { } = productListSlice.actions
+export const { addToCart } = productListSlice.actions
 
 export default productListSlice.reducer

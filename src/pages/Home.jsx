@@ -1,5 +1,4 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../store/authSlice";
 import ProductCard from "../components/ProductCard";
 
@@ -7,8 +6,11 @@ const Home = () => {
   const dispatch = useDispatch();
 
   return (
-    <div>
-      <ProductCard />
+    <div className="mx-5 my-5">
+      <div className="flex">
+        <ProductCard />
+        <ProductCard />
+      </div>
       <br />
       <div>
         <button

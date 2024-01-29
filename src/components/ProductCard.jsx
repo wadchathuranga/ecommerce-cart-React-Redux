@@ -5,15 +5,17 @@ import { FaShoppingCart } from "react-icons/fa";
 import { MdOutlineLabelImportant } from "react-icons/md";
 import Badge from "./Badge";
 import { useDispatch } from "react-redux";
+import { addToCart } from "../store/cartSlice";
 
-const ProductCard = () => {
+const ProductCard = (props) => {
+  const dispatch = useDispatch();
   return (
     <div className="w-full relative group">
-      <div className="max-w-80 max-h-80 relative overflow-y-hidden ">
+      <div className="max-w-80 max-h-80 relative overflow-y-hidden border-[1px]">
         <div>
           <img
             className="h-[200px] w-auto"
-            src="src/assets/react.svg"
+            src="src/assets/watch.jpeg"
             alt="Your Company"
           />
         </div>
@@ -26,19 +28,19 @@ const ProductCard = () => {
               </span>
             </li>
             <li
-              //   onClick={() =>
-              //     dispatch(
-              //       addToCart({
-              //         _id: props._id,
-              //         name: props.productName,
-              //         quantity: 1,
-              //         image: props.img,
-              //         badge: props.badge,
-              //         price: props.price,
-              //         colors: props.color,
-              //       })
-              //     )
-              //   }
+              onClick={() =>
+                dispatch(
+                  addToCart({
+                    id: props.id,
+                    title: props.title,
+                    price: props.price,
+                    description: props.description,
+                    image: props.image,
+                    // badge: props.badge,
+                    // colors: props.color,
+                  })
+                )
+              }
               className="text-[#767676] hover:text-primeColor text-sm font-normal border-b-[1px] border-b-gray-200 hover:border-b-primeColor flex items-center justify-end gap-2 hover:cursor-pointer pb-1 duration-300 w-full"
             >
               Add to Cart
@@ -55,7 +57,7 @@ const ProductCard = () => {
                 <MdOutlineLabelImportant />
               </span>
             </li>
-            <li className="text-[#767676] hover:text-primeColor text-sm font-normal border-b-[1px] border-b-gray-200 hover:border-b-primeColor flex items-center justify-end gap-2 hover:cursor-pointer pb-1 duration-300 w-full">
+            <li className="text-[#767676] hover:text-primeColor text-sm font-normal border-b-[0px] border-b-gray-200 hover:border-b-primeColor flex items-center justify-end gap-2 hover:cursor-pointer pb-1 duration-300 w-full">
               Add to Wish List
               <span>
                 <BsSuitHeartFill />
@@ -70,7 +72,7 @@ const ProductCard = () => {
           <p className="text-[#767676] text-[14px]">$12.50</p>
         </div>
         <div>
-          <p className="text-[#767676] text-[14px]">Blue</p>
+          <p className="text-[#767676] text-[14px]">Description</p>
         </div>
       </div>
     </div>

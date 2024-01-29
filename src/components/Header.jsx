@@ -1,6 +1,12 @@
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { logout } from "../store/authSlice";
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const { userInfo } = useSelector((state) => state.auth);
+  const { cart } = useSelector((state) => state.cart);
+
   return (
     <nav className="bg-gray-700 text-white">
       <div className="w-full h-14 px-10 flex justify-between items-center ">
@@ -31,19 +37,34 @@ const Header = () => {
         </div>
 
         <div className="flex items-center space-x-2 font-semibold">
-          <div>
+          <div className="flex">
+            <span>{cart && 0}</span>
             <img src="src/assets/cart.svg" className="pr-3 h-6 w-auto" />
           </div>
-          <Link to={"/login"}>
-            <button className="py-1 px-3 bg-blue-500 rounded hover:bg-blue-700">
-              Login
-            </button>
-          </Link>
-          <Link to={"/signup"}>
-            <button className="py-1 px-3 bg-yellow-500 rounded hover:bg-yellow-700">
-              Signup
-            </button>
-          </Link>
+          {!userInfo ? (
+            <div className="flex items-center space-x-2">
+              <Link to={"/login"}>
+                <button className="py-1 px-3 bg-blue-500 rounded hover:bg-blue-700">
+                  Login
+                </button>
+              </Link>
+              <Link to={"/signup"}>
+                <button className="py-1 px-3 bg-yellow-500 rounded hover:bg-yellow-700">
+                  Signup
+                </button>
+              </Link>
+            </div>
+          ) : (
+            <div>
+              <button
+                type="button"
+                className="bg-blue-600 rounded px-3 py-1 text-white"
+                onClick={() => dispatch(logout())}
+              >
+                LOGOUT
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Mobile Nav */}
