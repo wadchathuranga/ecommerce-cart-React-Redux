@@ -8,4 +8,4 @@ export const productsApiSlice = apiSlice.injectEndpoints({
     })
 });
 
-export const { } = usersApiSlice; 
+export const { } = productsApiSlice; 
