@@ -16,7 +16,7 @@ const Layout = () => {
         pauseOnHover={false}
       />
       <Outlet />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

@@ -30,7 +30,7 @@ const Header = () => {
           </Link>
         </div>
 
-        <div className="hidden md:flex items-center space-x-2 font-semibold">
+        <div className="flex items-center space-x-2 font-semibold">
           <div>
             <img src="src/assets/cart.svg" className="pr-3 h-6 w-auto" />
           </div>
