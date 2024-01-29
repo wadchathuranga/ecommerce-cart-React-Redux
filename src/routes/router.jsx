@@ -7,6 +7,7 @@ import About from "../pages/About.jsx";
 import Products from "../pages/Products.jsx";
 import Login from "../pages/Login.jsx";
 import Signup from "../pages/Signup.jsx";
+import NotFound from "../pages/NotFound.jsx";
 
 export const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ export const router = createBrowserRouter([
       {
         path: "/home",
         element: <Home />,
+      },
+      {
+        path: "/not-found",
+        element: <NotFound />,
       },
       {
         path: "/login",
