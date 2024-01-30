@@ -15,11 +15,11 @@ const productListSlice = createSlice({
             if (existingIndex >= 0) {
                 state.cartItems[existingIndex] = {
                     ...state.cartItems[existingIndex],
-                    cartQuantity: state.cartItems[existingIndex].cartQuantity + 1,
+                    quantity: state.cartItems[existingIndex].quantity + 1,
                 }
                 toast.info("Increased product quantity");
             } else {
-                state.cartItems.push({ ...item, cartQuantity: 1 });
+                state.cartItems.push({ ...item, quantity: 1 });
                 toast.success("Product added to cart");
             }
             localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
