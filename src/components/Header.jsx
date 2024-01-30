@@ -5,7 +5,7 @@ import { logout } from "../store/authSlice";
 const Header = () => {
   const dispatch = useDispatch();
   const { userInfo } = useSelector((state) => state.auth);
-  const { cart } = useSelector((state) => state.cart);
+  const cart = useSelector((state) => state.cart.cartItems.length);
 
   return (
     <nav className="bg-gray-700 text-white">
@@ -38,7 +38,7 @@ const Header = () => {
 
         <div className="flex items-center space-x-2 font-semibold">
           <div className="flex">
-            <span>{cart && 0}</span>
+            <span className=" bg-yellow-400 rounded px-1">{cart}</span>
             <img src="src/assets/cart.svg" className="pr-3 h-6 w-auto" />
           </div>
           {!userInfo ? (

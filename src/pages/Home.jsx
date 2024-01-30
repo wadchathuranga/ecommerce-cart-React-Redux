@@ -28,15 +28,8 @@ const Home = () => {
     <div className="mx-5 my-5">
       <div className="flex flex-col gap-3">
         {items &&
-          items.map((item) => {
-            console.log(item),
-              (
-                <div key={item.id}>
-                  <ProductCard product={item.t} />
-                </div>
-              );
-          })}
-        <ProductCard />
+          items.map((item) => <ProductCard key={item.id} product={item} />)}
+        {/* <ProductCard /> */}
       </div>
       <br />
       <div>

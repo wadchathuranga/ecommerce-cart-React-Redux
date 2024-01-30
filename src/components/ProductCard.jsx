@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { BsSuitHeartFill } from "react-icons/bs";
 import { GiReturnArrow } from "react-icons/gi";
 import { FaShoppingCart } from "react-icons/fa";
@@ -7,11 +8,8 @@ import Badge from "./Badge";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../store/cartSlice";
 
-const ProductCard = ({ item }) => {
-  console.log("🚀 ~ ProductCard ~ title:", title);
+const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
-
-  // const { title } = prop;
 
   return (
     <div className="w-full relative group">
@@ -19,7 +17,7 @@ const ProductCard = ({ item }) => {
         <div>
           <img
             className="h-[200px] w-auto"
-            src="src/assets/watch.jpeg"
+            src={product.image}
             alt="Your Company"
           />
         </div>
@@ -35,13 +33,12 @@ const ProductCard = ({ item }) => {
               onClick={() =>
                 dispatch(
                   addToCart({
-                    // id: item.id,
-                    // title: item.title,
-                    // price: item.price,
-                    // description: item.description,
-                    // image: item.image,
-                    // badge: props.badge,
-                    // colors: props.color,
+                    id: product.id,
+                    title: product.title,
+                    price: product.price,
+                    description: product.description,
+                    image: product.image,
+                    category: product.category,
                   })
                 )
               }
@@ -72,13 +69,11 @@ const ProductCard = ({ item }) => {
       </div>
       <div className="max-w-80 py-6 flex flex-col gap-1 border-[1px] border-t-0 px-4">
         <div className="flex items-center justify-between font-titleFont">
-          <h2 className="text-lg text-primeColor font-bold">
-            {item ? item.title : `Undifine`}
-          </h2>
-          <p className="text-[#767676] text-[14px]">$12.50</p>
+          <h2 className="text-md text-primeColor font-bold">{product.title}</h2>
+          <p className="text-[#767676] text-[14px]">${product.price}</p>
         </div>
         <div>
-          <p className="text-[#767676] text-[14px]">Description</p>
+          <p className="text-[#767676] text-[14px]">{product.description}</p>
         </div>
       </div>
     </div>
