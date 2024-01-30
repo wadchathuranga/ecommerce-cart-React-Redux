@@ -37,10 +37,16 @@ const Header = () => {
         </div>
 
         <div className="flex items-center space-x-2 font-semibold">
-          <div className="flex">
-            <span className=" bg-yellow-400 rounded px-1">{cart}</span>
-            <img src="src/assets/cart.svg" className="pr-3 h-6 w-auto" />
-          </div>
+          {
+            <Link to={userInfo ? "/cart" : "/login"}>
+              <div className="flex">
+                <span className=" bg-yellow-400 rounded px-1 size-4 text-xs">
+                  {cart}
+                </span>
+                <img src="src/assets/cart.svg" className="pr-3 h-6 w-auto" />
+              </div>
+            </Link>
+          }
           {!userInfo ? (
             <div className="flex items-center space-x-2">
               <Link to={"/login"}>
