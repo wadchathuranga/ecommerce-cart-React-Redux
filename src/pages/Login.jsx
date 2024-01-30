@@ -15,7 +15,6 @@ const Login = () => {
   const [login, { isLoading }] = useLoginMutation();
 
   const { userInfo } = useSelector((state) => state.auth);
-  console.log("🚀 ~ Login ~ userInfo:", userInfo);
 
   useEffect(() => {
     if (userInfo) {
