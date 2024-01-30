@@ -1,8 +1,10 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import ItemCard from "../components/ItemCard";
+import { clearCart } from "../store/cartSlice";
 
 const Cart = () => {
+  const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
   return (
     <div className="max-w-container mx-auto px-4">
@@ -23,7 +25,7 @@ const Cart = () => {
           </div>
 
           <button
-            // onClick={() => dispatch(resetCart())}
+            onClick={() => dispatch(clearCart())}
             className="py-2 px-10 bg-red-500 text-white font-semibold uppercase mb-4 hover:bg-red-700 duration-300"
           >
             Reset cart

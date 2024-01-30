@@ -1,5 +1,6 @@
 import { ImCross } from "react-icons/im";
 import { useDispatch } from "react-redux";
+import { deleteItem } from "../store/cartSlice";
 
 const ItemCard = ({ item }) => {
   const dispatch = useDispatch();
@@ -7,7 +8,7 @@ const ItemCard = ({ item }) => {
     <div className="w-full grid grid-cols-5 mb-4 border py-2">
       <div className="flex col-span-5 mdl:col-span-2 items-center gap-4 ml-4">
         <ImCross
-          //   onClick={() => dispatch(deleteItem(item._id))}
+          onClick={() => dispatch(deleteItem(item.id))}
           className="text-primeColor hover:text-red-500 duration-300 cursor-pointer"
         />
         <img className="w-32 h-32" src={item.image} alt="productImage" />
