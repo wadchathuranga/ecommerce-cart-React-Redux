@@ -26,7 +26,7 @@ const Header = () => {
             <p className="hover:text-blue-500">Home</p>
           </Link>
           <Link to={"/shop"}>
-            <p className="hover:text-blue-500">Products</p>
+            <p className="hover:text-blue-500">Shop</p>
           </Link>
           <Link to={"/about"}>
             <p className="hover:text-blue-500">About</p>
