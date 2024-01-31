@@ -1,18 +1,16 @@
-import React from "react";
-import PropTypes from "prop-types";
 import { BsSuitHeartFill } from "react-icons/bs";
 import { GiReturnArrow } from "react-icons/gi";
 import { FaShoppingCart } from "react-icons/fa";
 import { MdOutlineLabelImportant } from "react-icons/md";
-import Badge from "./Badge";
 import { useDispatch } from "react-redux";
+
 import { addToCart } from "../store/cartSlice";
 
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
 
   return (
-    <div className="bg-white w-fit relative group">
+    <div className="bg-white w-fit relative group shadow-md">
       <div className="max-w-80 max-h-80 relative overflow-y-hidden border-[1px]">
         <div>
           <img
@@ -67,7 +65,7 @@ const ProductCard = ({ product }) => {
           </ul>
         </div>
       </div>
-      <div className="max-w-80 py-6 flex flex-col gap-1 border-[1px] border-t-0 px-4">
+      <div className="max-w-80 py-6 flex flex-col gap-1 border-[1px] border-t-0 border-b-0 px-4">
         <div className="flex items-center justify-between font-titleFont">
           <h2 className="text-md text-primeColor font-bold">{product.title}</h2>
           <p className="text-[#767676] text-[14px]">${product.price}</p>
