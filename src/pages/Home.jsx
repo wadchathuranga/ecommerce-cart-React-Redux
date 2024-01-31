@@ -10,14 +10,12 @@ const Home = () => {
 
   const { items } = useSelector((state) => state.products);
   console.log("🚀 ~ Home ~ items:", items);
-  // setItemList{items};
 
   const [fetchProducts, { isLoading }] = useFetchProductsMutation();
 
   useEffect(() => {
     const fetchProductList = async () => {
       const response = await fetchProducts().unwrap();
-      console.log("🚀 ~ submitHandler ~ response:", response);
       dispatch(setItems(response));
     };
 
@@ -25,21 +23,10 @@ const Home = () => {
   }, [dispatch, fetchProducts]);
 
   return (
-    <div className="mx-5 my-5">
+    <div className="px-5 py-5">
       <div className="flex flex-col gap-3">
         {items &&
           items.map((item) => <ProductCard key={item.id} product={item} />)}
-        {/* <ProductCard /> */}
-      </div>
-      <br />
-      <div>
-        <button
-          type="button"
-          className="bg-blue-600 rounded px-3 py-1 text-white"
-          onClick={() => dispatch(logout())}
-        >
-          LOGOUT
-        </button>
       </div>
     </div>
   );
