@@ -12,7 +12,7 @@ const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
 
   return (
-    <div className="w-full relative group">
+    <div className="bg-white w-fit relative group">
       <div className="max-w-80 max-h-80 relative overflow-y-hidden border-[1px]">
         <div>
           <img

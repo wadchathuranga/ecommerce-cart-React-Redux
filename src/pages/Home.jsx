@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../store/authSlice";
 import ProductCard from "../components/ProductCard";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useFetchProductsMutation } from "../store/api/productsApiSlice";
 import { setItems } from "../store/productsSlice";
 
@@ -23,10 +22,12 @@ const Home = () => {
   }, [dispatch, fetchProducts]);
 
   return (
-    <div className="px-5 py-5">
-      <div className="flex flex-col gap-3">
-        {items &&
-          items.map((item) => <ProductCard key={item.id} product={item} />)}
+    <div className="min-h-screen bg-slate-100">
+      <div className="px-5 py-5">
+        <div className="flex flex-col gap-3">
+          {items &&
+            items.map((item) => <ProductCard key={item.id} product={item} />)}
+        </div>
       </div>
     </div>
   );
