@@ -44,7 +44,7 @@ const Cart = () => {
                 placeholder="Coupon Number"
               />
               <button
-                onClick={() => dispatch(clearCart())}
+                onClick={() => {}}
                 className="text-sm font-semibold text-black hover:bg-black hover:text-white duration-100 py-2 px-2 border border-black"
               >
                 Apply Coupon
