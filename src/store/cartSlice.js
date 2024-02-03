@@ -26,7 +26,7 @@ const productListSlice = createSlice({
         },
         increaseQuantity: (state, action) => {
             const itemId = action.payload;
-            let exItem = state.cartItems.find(
+            const exItem = state.cartItems.find(
                 (item) => item.id === itemId
             );
             if (exItem) {
@@ -38,16 +38,17 @@ const productListSlice = createSlice({
         },
         drecreaseQuantity: (state, action) => {
             const itemId = action.payload;
-            const existingItem = state.cartItems.find(
+            const exItem = state.cartItems.find(
                 (item) => item.id === itemId
             );
-            if (existingItem.quantity === 1) {
-                existingItem.quantity = 1;
+            if (exItem.quantity === 1) {
+                exItem.quantity = 1;
             } else {
-                existingItem.quantity--;
+                exItem.quantity--;
             }
-            // const updatedCartItems = state.cartItems.filter((item) => item.id !== itemId);
-            // localStorage.setItem("cartItems", JSON.stringify(updatedCartItems.push(existingItem)));
+            const otherCartItems = state.cartItems.filter((item) => item.id !== itemId);
+            const updatedCartItems = [...otherCartItems, exItem];
+            localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
         },
         deleteItem: (state, action) => {
             const itemId = action.payload;
