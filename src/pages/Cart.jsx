@@ -61,7 +61,7 @@ const Cart = () => {
                 <p className="flex items-center justify-between border-[1px] border-gray-400 border-b-0 py-1.5 text-lg px-4 font-medium">
                   Subtotal
                   <span className="font-semibold tracking-wide font-titleFont">
-                    ${" "}
+                    $
                     {cartItems
                       .reduce(
                         (preValue, item) =>
@@ -74,26 +74,29 @@ const Cart = () => {
                 <p className="flex items-center justify-between border-[1px] border-gray-400 border-b-0 py-1.5 text-lg px-4 font-medium">
                   Shipping Charge
                   <span className="font-semibold tracking-wide font-titleFont">
-                    $ {Number(8 + 9).toFixed(2)}
+                    + ${Number(10).toFixed(2)}
                   </span>
                 </p>
                 <p className="flex items-center justify-between border-[1px] border-gray-400 border-b-0 py-1.5 text-lg px-4 font-medium">
                   Coupon Discount
                   <span className="font-semibold tracking-wide font-titleFont">
-                    - $ {Number(3 + 2).toFixed(2)}
+                    - ${Number(1).toFixed(2)}
                   </span>
                 </p>
                 <p className="flex items-center justify-between border-[1px] border-gray-400 py-1.5 text-lg px-4 font-bold">
                   Total
                   <span className="font-bold tracking-wide text-lg font-titleFont">
-                    $ {Number(47 - 5).toFixed(2)}
+                    ${Number(47 - 5).toFixed(2)}
                   </span>
                 </p>
               </div>
 
               <div className="flex justify-end">
                 <Link to="/paymentgateway">
-                  <button className="w-52 h-10 bg-primeColor font-semibold text-black hover:bg-black hover:text-white duration-100 border border-black">
+                  <button
+                    className="w-52 h-10 bg-primeColor font-semibold text-black hover:bg-black hover:text-white duration-100 border border-black"
+                    disabled={cartItems.length === 0}
+                  >
                     Proceed to Checkout
                   </button>
                 </Link>
@@ -115,7 +118,7 @@ const Cart = () => {
             </h1>
 
             <Link to="/shop">
-              <button className="bg-blue-500 rounded-md cursor-pointer hover:bg-black active:bg-gray-900 px-8 py-2 font-titleFont font-semibold text-lg text-white hover:text-white duration-300">
+              <button className="rounded-md cursor-pointer text-black hover:bg-black active:bg-black px-8 py-2 font-titleFont font-semibold text-lg hover:text-white duration-100 border border-black">
                 Continue Shopping
               </button>
             </Link>
