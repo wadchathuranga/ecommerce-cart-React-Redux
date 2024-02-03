@@ -13,7 +13,7 @@ const ItemCard = ({ item }) => {
       <div className="flex items-center space-x-10">
         <ImCross
           onClick={() => dispatch(deleteItem(item.id))}
-          className="text-primeColor hover:text-red-500 duration-300 cursor-pointer"
+          className="text-primeColor hover:text-red-500 duration-100 cursor-pointer"
         />
         <img className="w-32 h-32" src={item.image} alt="productImage" />
         <h1 className="font-titleFont font-semibold">{item.title}</h1>
