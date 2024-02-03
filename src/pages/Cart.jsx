@@ -39,13 +39,13 @@ const Cart = () => {
           <div className="flex items-center justify-end border py-4 px-4 ">
             <div className="flex items-center gap-3">
               <input
-                className="w-44 mdl:w-52 h-8 px-4 border text-primeColor text-sm outline-none border-gray-400"
+                className="w-44 h-9 px-4 border text-primeColor text-sm outline-none border-gray-400"
                 type="text"
                 placeholder="Coupon Number"
               />
               <button
                 onClick={() => dispatch(clearCart())}
-                className="text-sm font-semibold bg-black text-white duration-100 py-2 px-2"
+                className="text-sm font-semibold text-black hover:bg-black hover:text-white duration-100 py-2 px-2 border border-black"
               >
                 Apply Coupon
               </button>
@@ -75,7 +75,7 @@ const Cart = () => {
                     - $ {Number(3 + 2).toFixed(2)}
                   </span>
                 </p>
-                <p className="flex items-center justify-between border-[1px] border-gray-400 py-1.5 text-lg px-4 font-medium">
+                <p className="flex items-center justify-between border-[1px] border-gray-400 py-1.5 text-lg px-4 font-bold">
                   Total
                   <span className="font-bold tracking-wide text-lg font-titleFont">
                     $ {Number(47 - 5).toFixed(2)}
@@ -85,7 +85,7 @@ const Cart = () => {
 
               <div className="flex justify-end">
                 <Link to="/paymentgateway">
-                  <button className="w-52 h-10 bg-primeColor text-white hover:bg-black duration-300">
+                  <button className="w-52 h-10 bg-primeColor font-semibold text-black hover:bg-black hover:text-white duration-100 border border-black">
                     Proceed to Checkout
                   </button>
                 </Link>
