@@ -21,7 +21,7 @@ const Header = () => {
           </div>
         </Link>
 
-        <div className="hidden md:flex space-x-3 font-semibold">
+        <div className="hidden md:flex space-x-10 font-semibold">
           <Link to={"/home"}>
             <p className="hover:text-blue-500">Home</p>
           </Link>
