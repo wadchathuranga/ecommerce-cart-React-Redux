@@ -9,8 +9,8 @@ import {
 const ItemCard = ({ item }) => {
   const dispatch = useDispatch();
   return (
-    <div className="w-full grid grid-flow-col mb-4 py-3 border">
-      <div className="flex items-center justify-evenly">
+    <div className="w-full grid grid-flow-col mb-4 px-10 py-3 border">
+      <div className="flex items-center space-x-10">
         <ImCross
           onClick={() => dispatch(deleteItem(item.id))}
           className="text-primeColor hover:text-red-500 duration-300 cursor-pointer"
@@ -19,7 +19,7 @@ const ItemCard = ({ item }) => {
         <h1 className="font-titleFont font-semibold">{item.title}</h1>
       </div>
 
-      <div className="flex items-center justify-evenly">
+      <div className="flex items-center justify-end space-x-28">
         <div>$ {Number(item.price).toFixed(2)}</div>
 
         <div className="flex space-x-3">
