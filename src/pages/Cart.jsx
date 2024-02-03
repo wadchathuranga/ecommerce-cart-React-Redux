@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import lodash from "lodash";
 import ItemCard from "../components/ItemCard";
 import { clearCart } from "../store/cartSlice";
 
@@ -22,7 +23,7 @@ const Cart = () => {
             </div>
           </div>
           <div className="mt-5">
-            {cartItems.map((item) => (
+            {lodash.sortBy(cartItems, ["title"]).map((item) => (
               <div key={item.id}>
                 <ItemCard item={item} />
               </div>
@@ -60,7 +61,14 @@ const Cart = () => {
                 <p className="flex items-center justify-between border-[1px] border-gray-400 border-b-0 py-1.5 text-lg px-4 font-medium">
                   Subtotal
                   <span className="font-semibold tracking-wide font-titleFont">
-                    $ {Number(10 + 20).toFixed(2)}
+                    ${" "}
+                    {cartItems
+                      .reduce(
+                        (preValue, item) =>
+                          preValue + item.quantity * item.price,
+                        0
+                      )
+                      .toFixed(2)}
                   </span>
                 </p>
                 <p className="flex items-center justify-between border-[1px] border-gray-400 border-b-0 py-1.5 text-lg px-4 font-medium">
@@ -107,7 +115,7 @@ const Cart = () => {
             </h1>
 
             <Link to="/shop">
-              <button className="bg-blue-500 rounded-md cursor-pointer hover:bg-black active:bg-gray-900 px-8 py-2 font-titleFont font-semibold text-lg text-gray-200 hover:text-white duration-300">
+              <button className="bg-blue-500 rounded-md cursor-pointer hover:bg-black active:bg-gray-900 px-8 py-2 font-titleFont font-semibold text-lg text-white hover:text-white duration-300">
                 Continue Shopping
               </button>
             </Link>

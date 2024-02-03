@@ -26,25 +26,28 @@ const productListSlice = createSlice({
         },
         increaseQuantity: (state, action) => {
             const itemId = action.payload;
-            const item = state.cartItems.find(
+            let exItem = state.cartItems.find(
                 (item) => item.id === itemId
             );
-            if (item) {
-                item.quantity++;
+            if (exItem) {
+                exItem.quantity++;
             }
-            // localStorage.setItem("cartItems", JSON.stringify(item));
+            const otherCartItems = state.cartItems.filter((item) => item.id !== itemId);
+            const updatedCartItem = [...otherCartItems, exItem];
+            localStorage.setItem("cartItems", JSON.stringify(updatedCartItem));
         },
         drecreaseQuantity: (state, action) => {
             const itemId = action.payload;
-            const item = state.cartItems.find(
+            const existingItem = state.cartItems.find(
                 (item) => item.id === itemId
             );
-            if (item.quantity === 1) {
-                item.quantity = 1;
+            if (existingItem.quantity === 1) {
+                existingItem.quantity = 1;
             } else {
-                item.quantity--;
+                existingItem.quantity--;
             }
-            // localStorage.setItem("cartItems", JSON.stringify(item));
+            // const updatedCartItems = state.cartItems.filter((item) => item.id !== itemId);
+            // localStorage.setItem("cartItems", JSON.stringify(updatedCartItems.push(existingItem)));
         },
         deleteItem: (state, action) => {
             const itemId = action.payload;
