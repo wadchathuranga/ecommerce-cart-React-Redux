@@ -14,6 +14,8 @@ import Login from "../pages/Login.jsx";
 import Signup from "../pages/Signup.jsx";
 import NotFound from "../pages/NotFound.jsx";
 import Cart from "../pages/Cart.jsx";
+import Order from "../pages/Order.jsx";
+import OrderList from "../pages/OrderList.jsx";
 import PrivateRoute from "./PrivateRoute.jsx";
 
 export const router = createBrowserRouter(
@@ -30,6 +32,8 @@ export const router = createBrowserRouter(
       <Route path="" element={<PrivateRoute />}>
         <Route path="/cart" element={<Cart />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/order" element={<Order />} />
+        <Route path="/order-list" element={<OrderList />} />
       </Route>
     </Route>
   )
@@ -39,6 +43,7 @@ export const router = createBrowserRouter(
 //   {
 //     path: "/",
 //     element: <App />,
+//     errorElement: <NotFound />,
 //     children: [
 //       {
 //         path: "/",
