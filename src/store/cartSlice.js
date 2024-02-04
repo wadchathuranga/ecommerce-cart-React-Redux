@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { toast } from "react-toastify";
 
-const initialState = {
-    cartItems: localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : [],
-}
+const initialState =
+    localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : { cartItems: [], shippingAddress: {}, paymentMethod: 'PayPal' };
+
 
 const productListSlice = createSlice({
     name: 'cart',
@@ -22,45 +22,53 @@ const productListSlice = createSlice({
                 state.cartItems.push({ ...item, quantity: 1 });
                 toast.success("Product added to cart");
             }
-            localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+            localStorage.setItem("cart", JSON.stringify(state));
         },
         increaseQuantity: (state, action) => {
             const itemId = action.payload;
-            const exItem = state.cartItems.find(
+            const exItemIndex = state.cartItems.findIndex(
                 (item) => item.id === itemId
             );
-            if (exItem) {
-                exItem.quantity++;
+            if (exItemIndex >= 0) {
+                state.cartItems[exItemIndex] = {
+                    ...state.cartItems[exItemIndex],
+                    quantity: state.cartItems[exItemIndex].quantity + 1,
+                }
             }
-            const otherCartItems = state.cartItems.filter((item) => item.id !== itemId);
-            const updatedCartItem = [...otherCartItems, exItem];
-            localStorage.setItem("cartItems", JSON.stringify(updatedCartItem));
+            localStorage.setItem("cart", JSON.stringify(state));
         },
         drecreaseQuantity: (state, action) => {
             const itemId = action.payload;
-            const exItem = state.cartItems.find(
+            const exItemIndex = state.cartItems.findIndex(
                 (item) => item.id === itemId
             );
-            if (exItem.quantity === 1) {
-                exItem.quantity = 1;
-            } else {
-                exItem.quantity--;
+            if (exItemIndex.quantity !== 1) {
+                state.cartItems[exItemIndex] = {
+                    ...state.cartItems[exItemIndex],
+                    quantity: state.cartItems[exItemIndex].quantity - 1,
+                }
             }
-            const otherCartItems = state.cartItems.filter((item) => item.id !== itemId);
-            const updatedCartItems = [...otherCartItems, exItem];
-            localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+            localStorage.setItem("cart", JSON.stringify(state));
         },
         deleteItem: (state, action) => {
             const itemId = action.payload;
             state.cartItems = state.cartItems.filter(
                 (item) => item.id !== itemId
             );
-            localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+            localStorage.setItem("cart", JSON.stringify(state));
         },
         clearCart: (state) => {
             state.cartItems = [];
-            localStorage.removeItem('cartItems');
+            localStorage.removeItem('cart');
         },
+        // saveShippingAddress: (state, action) => {
+        //     state.shippingAddress = action.payload;
+        //     localStorage.setItem('cart', JSON.stringify(state));
+        // },
+        // savePaymentMethod: (state, action) => {
+        //     state.paymentMethod = action.payload;
+        //     localStorage.setItem('cart', JSON.stringify(state));
+        // },
     }
 });
 
