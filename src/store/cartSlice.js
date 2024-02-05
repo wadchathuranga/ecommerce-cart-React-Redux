@@ -42,11 +42,16 @@ const productListSlice = createSlice({
             const exItemIndex = state.cartItems.findIndex(
                 (item) => item.id === itemId
             );
-            if (exItemIndex.quantity !== 1) {
+            if (state.cartItems[exItemIndex].quantity > 1) {
                 state.cartItems[exItemIndex] = {
                     ...state.cartItems[exItemIndex],
                     quantity: state.cartItems[exItemIndex].quantity - 1,
                 }
+            } else {
+                state.cartItems[exItemIndex] = {
+                    ...state.cartItems[exItemIndex],
+                }
+
             }
             localStorage.setItem("cart", JSON.stringify(state));
         },
