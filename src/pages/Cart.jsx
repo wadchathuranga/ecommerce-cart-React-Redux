@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import lodash from "lodash";
 import ItemCard from "../components/ItemCard";
 import { clearCart } from "../store/cartSlice";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
+
   return (
     <div className="max-w-container mx-auto px-4">
       {cartItems.length > 0 ? (
@@ -23,7 +23,7 @@ const Cart = () => {
             </div>
           </div>
           <div className="mt-5">
-            {lodash.sortBy(cartItems, ["title"]).map((item) => (
+            {cartItems.map((item) => (
               <div key={item.id}>
                 <ItemCard item={item} />
               </div>
